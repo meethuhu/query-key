@@ -35,7 +35,7 @@ h1 {
 }
 
 .title-hub>h3 {
-    margin: 14px 0;
+    margin-top: 14px;
     color: var(--text-color);
 }
 
@@ -138,7 +138,7 @@ input[type="button"] {
 
 
 .copyright {
-    margin: 40px;
+    margin: 40px 0;
     text-align: center;
     color: var(--text-color);
     line-height: 1.6;
@@ -179,7 +179,7 @@ input[type="button"] {
     width: min(100%, 800px);
     margin: 40px auto 0;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     /* font-size: 16px; */
 }
 
@@ -191,8 +191,8 @@ input[type="button"] {
     margin-bottom: 20px;
 }
 
-.copy-buttons{
-margin-bottom: 10px;
+.copy-buttons {
+    margin-bottom: 10px;
 }
 
 .copy-buttons>.submit-container {
@@ -252,7 +252,8 @@ th {
 .td4 {
     width: 40%;
     max-width: 40px;
-    overflow:inherit;
+    overflow: inherit;
+    overflow-wrap: break-word;
     /* Adjust width as needed */
 }
 
@@ -262,11 +263,11 @@ th {
     /* Style for "模型一致可用" */
 }
 
-.td1-no{
+.td1-no {
     color: rgb(211, 144, 19);
 }
 
-.td1-error{
+.td1-error {
     color: #dc3545;
 }
 
@@ -286,6 +287,7 @@ th {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
+    margin: 5px 0;
     /* Adjust font size as needed */
 }
 
@@ -303,7 +305,8 @@ th {
     color: #fff;
     background-color: #f8606f;
 }
-.verify-btn.green{
+
+.verify-btn.green {
     color: #fff;
     background-color: #f8606f;
 }
@@ -328,7 +331,8 @@ th {
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.3s;
-    white-space: nowrap;
+    /* white-space: nowrap;
+    overflow-wrap: break-word; */
     /* Prevent tooltip text from wrapping */
 }
 
@@ -337,20 +341,20 @@ th {
     opacity: 1;
 }
 
-.model-filter-container{
+.model-filter-container {
     display: flex;
 }
 
-.model-filter-container>input[type="text"]{
+.model-filter-container>input[type="text"] {
     flex: 4;
 }
 
-.model-filter-container>button:nth-child(2){
+.model-filter-container>button:nth-child(2) {
     flex: 1;
     margin: 13px 10px 0 10px;
 }
 
-.model-filter-container>button:nth-child(3){
+.model-filter-container>button:nth-child(3) {
     flex: 1;
     margin: 13px 0 0 0;
 }
