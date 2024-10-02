@@ -178,7 +178,7 @@ input[type="button"] {
     text-align: center;
     width: min(100%, 800px);
     margin: 40px auto 0;
-    padding: 20px;
+    /*padding: 20px;*/
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     /* font-size: 16px; */
 }
