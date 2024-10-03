@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -7,73 +7,74 @@
     <title>API CHECKER</title>
     <link rel="icon" href="https://openai.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/css/layui.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/response.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/layui/2.6.8/layui.min.js"></script>
 </head>
 
 <body>
 
-    <div class="title-hub">
-        <h1>API CHECKER</h1>
-        <h3>适配 ONE/NEW 等中转格式</h3>
+<div class="title-hub">
+    <h1>API CHECKER</h1>
+    <h3>适配 ONE/NEW 等中转格式</h3>
+</div>
+
+<form action="" id="apiForm">
+    <textarea id="api_info" name="api_info"
+              placeholder="懒人专用文本框，支持同时粘贴接口地址和密钥，如：https://api.openai.com，sk-kfcV50"></textarea>
+    <input type="text" id="api_url" name="api_url" placeholder="接口地址，如：https://api.openai.com" value="">
+    <input type="text" id="api_key" name="api_key" placeholder="API 密钥，如：sk-TodayIsThursdayVme50ForKFC" value="">
+
+    <div class="model-input-container" id="model-input-container">
+        <textarea id="model_name" name="model_name" class="model_left"
+                  placeholder="支持手动填入测试模型名称，用英文逗号分隔多个模型"></textarea>
+        <div class="model_right">
+            <div class="model-timeout">
+                <label for="model_timeout">设置请求超时:</label><br>
+                <input type="number" id="model_timeout" name="model_timeout" value="10" min="1">
+            </div>
+
+            <div class="model-concurrency">
+                <label for="model_concurrency">设置并发数量:</label><br>
+                <input type="number" id="model_concurrency" name="model_concurrency" value="5" min="1">
+            </div>
+
+            <input type="button" value="获取模型列表" onclick="getModelList()">
+        </div>
     </div>
 
-    <form action="" id="apiForm">
-        <textarea id="api_info" name="api_info"
-            placeholder="懒人专用文本框，支持同时粘贴接口地址和密钥，如：https://api.openai.com，sk-kfcV50"></textarea>
-        <input type="text" id="api_url" name="api_url" placeholder="接口地址，如：https://api.openai.com" value="">
-        <input type="text" id="api_key" name="api_key" placeholder="API 密钥，如：sk-TodayIsThursdayVme50ForKFC" value="">
+    <div class="submit-container">
+        <input type="button" value="测试模型" onclick="testModels()" class="submit-query">
+        <input type="button" value="检查额度" onclick="checkQuota()" class="check-quota">
+        <input type="button" value="清空表单" onclick="clearForm()" class="clear-form">
+    </div>
 
-        <div class="model-input-container" id="model-input-container">
-            <textarea type="text" id="model_name" name="model_name" class="model_left"
-                placeholder="支持手动填入测试模型名称，用英文逗号分隔多个模型"></textarea>
+</form>
 
-            <div class="model_right">
-                <div class="model-timeout">
-                    <label for="model_timeout">设置请求超时:</label><br>
-                    <input type="number" id="model_timeout" name="model_timeout" value="10" min="1">
-                </div>
+<div id="results" class="response-container"></div>
 
-                <div class="model-concurrency">
-                    <label for="model_concurrency">设置并发数量:</label><br>
-                    <input type="number" id="model_concurrency" name="model_concurrency" value="5" min="1">
-                </div>
+<footer class="copyright">
+    <!-- 不要删除 感谢 Rick 和 Megasoft 的贡献 -->
+    <span>© 2024 linuxdoer 版权所有</span><br>
+    <span>项目地址：<a href="https://github.com/QAbot-zh/query-key" target="_blank">API CHECKER</a></span>
+    <div class="contributors-list">
+        <span><a href="https://linux.do/u/rick" target="_blank">
+            <img src="https://linux.do/user_avatar/linux.do/rick/288/137821_2.png" alt="rick">rick</a></span>
+        <span><a href="https://linux.do/u/zhong_little" target="_blank">
+            <img src="https://linux.do/user_avatar/linux.do/zhong_little/288/104887_2.png"
+                 alt="Megasoft">Megasoft</a></span>
+        <span><a href="https://linux.do/u/fangyuan99" target="_blank">
+            <img src="https://linux.do/letter_avatar_proxy/v4/letter/f/b3f665/144.png"
+                 alt="fangyuan99">fangyuan99</a></span>
+        <span><a href="https://github.com/juzeon" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/12206799?s=60&v=4" alt="juzeon">juzeon</a></span>
+        <span><a href="https://github.com/meethuhu" target="_blank">
+            <img src="https://github.com/meethuhu.png" alt="meethuhu">meethuhu</a></span>
+    </div>
+</footer>
 
-                <input type="button" value="获取模型列表" onclick="getModelList()">
-            </div>
-        </div>
 
-        <div class="submit-container">
-            <input type="button" value="测试模型" onclick="testModels()" class="submit-query">
-            <input type="button" value="检查额度" onclick="checkQuota()" class="check-quota">
-            <input type="button" value="清空表单" onclick="clearForm()" class="clear-form">
-        </div>
-
-    </form>
-
-    <div id="results" class="response-container"></div>
-
-    <footer class="copyright">
-        <!--    不要删除 感谢 Rick 和 Megasoft 的贡献-->
-        <span>© 2024 linuxdoer 版权所有</span><br>
-        <span>项目地址：<a href="https://github.com/QAbot-zh/query-key" target="_blank">API CHECKER</a></span><br>
-        <div>
-            <span><a href="https://linux.do/u/rick" target="_blank"><img
-                        src="https://linux.do/user_avatar/linux.do/rick/288/137821_2.png" alt="rick">rick</a></span>
-
-            <span><a href="https://linux.do/u/zhong_little" target="_blank"><img
-                        src="https://linux.do/user_avatar/linux.do/zhong_little/288/104887_2.png"
-                        alt="Megasoft">Megasoft</a></span>
-
-            <span><a href="https://linux.do/u/fangyuan99" target="_blank"><img
-                        src="https://linux.do/letter_avatar_proxy/v4/letter/f/b3f665/144.png"
-                        alt="fangyuan99">fangyuan99</a></span>
-            <span><a href="https://github.com/juzeon" target="_blank"><img
-                        src="https://avatars.githubusercontent.com/u/12206799?s=60&v=4" alt="juzeon">juzeon</a></span>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="js/script.js"></script>
 </body>
 
 </html>
