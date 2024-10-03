@@ -102,7 +102,7 @@ function displayModelCheckboxes(models) {
         let layer = layui.layer;
         let form = layui.form;
 
-        let content = '<div style="padding: 20px;"><form class="layui-form">';
+        let content = '<div css="padding: 20px;"><form class="layui-form">';
         content += '<div id="selectedCount">已选择 0 个模型</div>';
         content += `
                 <div class="model-filter-container">
@@ -274,7 +274,7 @@ async function testModels() {
             try {
                 const requestBody = {
                     model: model,
-                    messages: [{ role: "user", content: "写一个10个字的冷笑话" }]
+                    messages: [{role: "user", content: "写一个10个字的冷笑话"}]
                 };
                 if (/^(gpt-|chatgpt-|o1-)/.test(model)) {
                     requestBody.seed = 331;
@@ -296,7 +296,7 @@ async function testModels() {
                     const data = await response.json();
                     const returnedModel = data.model;
                     if (returnedModel === model) {
-                        results.valid.push({ model, responseTime });
+                        results.valid.push({model, responseTime});
                         if (/^(gpt-|chatgpt-|o1-)/.test(model)) {
                             if (data.system_fingerprint) {
                                 results.awaitOfficialVerification.push({
@@ -307,7 +307,7 @@ async function testModels() {
                         }
                         console.log(`测试 API 节点：${apiUrl} 测试模型：${model} 模型一致，响应时间：${responseTime.toFixed(2)} 秒`);
                     } else {
-                        results.inconsistent.push({ model, returnedModel, responseTime });
+                        results.inconsistent.push({model, returnedModel, responseTime});
                         console.log(`测试 API 节点：${apiUrl} 测试模型：${model} 模型不一致，期望：${model}，实际：${returnedModel}，响应时间：${responseTime.toFixed(2)} 秒`);
                     }
                 } else {
@@ -321,15 +321,15 @@ async function testModels() {
                             response_text = '无法解析响应内容';
                         }
                     }
-                    results.invalid.push({ model, response_text })
+                    results.invalid.push({model, response_text})
                     console.log(`测试 API 节点：${apiUrl} 测试模型：${model} 模型不可用，响应：${response.status} ${response.statusText} ${response_text}`);
                 }
             } catch (error) {
                 if (error.name === 'AbortError') {
-                    results.invalid.push({ model, error: '超时' });
+                    results.invalid.push({model, error: '超时'});
                     console.log(`测试 API 节点：${apiUrl} 测试模型：${model} 模型不可用（超时）`);
                 } else {
-                    results.invalid.push({ model, error: error.message });
+                    results.invalid.push({model, error: error.message});
                     console.log(`测试 API 节点：${apiUrl} 测试模型：${model} 模型不可用，错误：${error.message}`);
                 }
             } finally {
@@ -374,7 +374,7 @@ function showSummary(results) {
                     - ${validCount} 个模型可用且一致<br>
                     - ${inconsistentCount} 个模型可用但不一致<br>
                     - ${invalidCount} 个模型不可用`,
-            { title: '测试结果总结' }
+            {title: '测试结果总结'}
         );
     });
 }
@@ -449,7 +449,7 @@ function displayResults(results) {
         }
         content += `
                 <tr>
-                    <td class="td1 td1-no" >模型不一致</br>疑似掺假!!</td>
+                    <td class="td1 td1-no" >模型不一致</br>疑似掺假!!!</td>
                     <td class="td2">
                         <span class="copy-btn2"" onclick="copyText('${r.model}')">${r.model}</span>
                     </td>
@@ -491,6 +491,7 @@ async function verifyOfficial(model) {
         });
     });
 }
+
 function findMostFrequent(arr) {
     const frequency = {};
     let maxCount = 0;
@@ -505,8 +506,9 @@ function findMostFrequent(arr) {
         }
     }
 
-    return { element: mostFrequentElement, count: maxCount };
+    return {element: mostFrequentElement, count: maxCount};
 }
+
 async function verifyTemperature(model) {
     layui.use("layer", function () {
         const layer = layui.layer;
@@ -537,24 +539,22 @@ async function verifyTemperature(model) {
 
             let message = `<strong>当前待验证模型：${model}</strong><p>参考值：c3.5 = 51(gcp测试)，gpt-4o = 59，gpt-4o-mini = 32(azure测试)</p>`;
             message +=
-                '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">' +
-                '<tr><th style="border: 1px solid #ddd; padding: 4px;">测试</th><th style="border: 1px solid #ddd; padding: 4px;">响应</th></tr>';
+                '<table css="width:100%; border-collapse: collapse; margin-bottom: 20px;">' +
+                '<tr><th css="border: 1px solid #ddd; padding: 4px;">测试</th><th css="border: 1px solid #ddd; padding: 4px;">响应</th></tr>';
             let hitReferenceCount = 0;
             let color;
             for (let i = 0; i < 4; i++) {
                 if (responses[i] == referenceValue) {
                     hitReferenceCount++;
                     color = "green";
-                }
-                else if (responses[i] == "该次调用响应失败") {
+                } else if (responses[i] == "该次调用响应失败") {
                     color = "red"
-                }
-                else {
+                } else {
                     color = "black";
                 }
                 message +=
                     "<tr>" +
-                    '<td style="border: 1px solid #ddd; padding: 4px;">测试 ' +
+                    '<td css="border: 1px solid #ddd; padding: 4px;">测试 ' +
                     (i + 1) +
                     "</td>" +
                     `<td style="border: 1px solid #ddd; padding: 4px; color: ${color};">` +
@@ -634,7 +634,7 @@ async function sendTemperatureVerificationRequest(model) {
         return await response.json();
     } catch (error) {
         console.error("Error in sendTemperatureVerificationRequest:", error);
-        return { error: error.message };
+        return {error: error.message};
     }
 }
 
@@ -655,7 +655,7 @@ async function performOfficialVerification(model, seed) {
                 layui.use('layer', function () {
                     const layer = layui.layer;
                     layer.closeAll('loading');
-                    layer.alert(`请求 ${i + 1} 失败: ${results[i].error}`, { title: '错误' });
+                    layer.alert(`请求 ${i + 1} 失败: ${results[i].error}`, {title: '错误'});
                 });
                 return;
             }
@@ -664,7 +664,7 @@ async function performOfficialVerification(model, seed) {
                 layui.use('layer', function () {
                     const layer = layui.layer;
                     layer.closeAll('loading');
-                    layer.alert(`请求 ${i + 1} 返回的数据结构无效`, { title: '错误' });
+                    layer.alert(`请求 ${i + 1} 返回的数据结构无效`, {title: '错误'});
                 });
                 return;
             }
@@ -679,7 +679,7 @@ async function performOfficialVerification(model, seed) {
             const layer = layui.layer;
             layer.closeAll('loading');
             if (api_url === "https://api.openai.com") {
-                layer.alert("官方API你来验证？", { title: '官方API' });
+                layer.alert("官方API你来验证？", {title: '官方API'});
             }
             let similarityCount = Object.values(similarity).filter(value => parseFloat(value) > 0.6).length;
             let lowSimilarityCount = Object.values(similarity).filter(value => parseFloat(value) < 0.1).length;
@@ -699,14 +699,14 @@ async function performOfficialVerification(model, seed) {
                 message += '<strong>Tips: 结果不确定，请进一步验证</strong>';
             }
 
-            message += '<table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">' +
-                '<tr><th style="border: 1px solid #ddd; padding: 8px;">测试</th><th style="border: 1px solid #ddd; padding: 8px;">文本</th><th style="border: 1px solid #ddd; padding: 8px;">系统指纹</th></tr>';
+            message += '<table css="width:100%; border-collapse: collapse; margin-bottom: 20px;">' +
+                '<tr><th css="border: 1px solid #ddd; padding: 8px;">测试</th><th css="border: 1px solid #ddd; padding: 8px;">文本</th><th css="border: 1px solid #ddd; padding: 8px;">系统指纹</th></tr>';
 
             for (let i = 0; i < 4; i++) {
                 message += '<tr>' +
-                    '<td style="border: 1px solid #ddd; padding: 8px;">测试 ' + (i + 1) + '</td>' +
-                    '<td style="border: 1px solid #ddd; padding: 8px;">' + texts[i] + '</td>' +
-                    '<td style="border: 1px solid #ddd; padding: 8px;">' + fingerprints[i] + '</td>' +
+                    '<td css="border: 1px solid #ddd; padding: 8px;">测试 ' + (i + 1) + '</td>' +
+                    '<td css="border: 1px solid #ddd; padding: 8px;">' + texts[i] + '</td>' +
+                    '<td css="border: 1px solid #ddd; padding: 8px;">' + fingerprints[i] + '</td>' +
                     '</tr>';
             }
 
@@ -716,14 +716,14 @@ async function performOfficialVerification(model, seed) {
                 Object.entries(similarity).map(([key, value]) => `${key}: ${value}`).join('<br>');
 
 
-            layer.alert(message, { title: title, area: ['600px', '400px'] });
+            layer.alert(message, {title: title, area: ['600px', '400px']});
         });
     } catch (error) {
         console.error('Error in performOfficialVerification:', error);
         layui.use('layer', function () {
             const layer = layui.layer;
             layer.closeAll('loading');
-            layer.alert('验证过程中发生错误: ' + error.message, { title: '错误' });
+            layer.alert('验证过程中发生错误: ' + error.message, {title: '错误'});
         });
     }
 }
@@ -758,7 +758,7 @@ async function sendVerificationRequest(model, seed) {
         return await response.json();
     } catch (error) {
         console.error('Error in sendVerificationRequest:', error);
-        return { error: error.message };
+        return {error: error.message};
     }
 }
 
@@ -798,6 +798,7 @@ async function verifyFunctionCalling(model) {
         });
     });
 }
+
 async function sendFunctionCallingRequest(model, a, b) {
     const apiUrl = document.getElementById('api_url').value.replace(/\/+$/, '');
     const apiKey = document.getElementById('api_key').value;
@@ -810,8 +811,8 @@ async function sendFunctionCallingRequest(model, a, b) {
             },
             body: JSON.stringify({
                 messages: [
-                    { "role": "system", "content": "You are a helpful assistant." },
-                    { "role": "user", "content": `Please add ${a} and ${b}.` }
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": `Please add ${a} and ${b}.`}
                 ],
                 functions: [
                     {
@@ -846,9 +847,10 @@ async function sendFunctionCallingRequest(model, a, b) {
         return await response.json();
     } catch (error) {
         console.error('Error in sendFunctionCallingRequest:', error);
-        return { error: error.message };
+        return {error: error.message};
     }
 }
+
 async function performFunctionCallingVerification(model, a, b) {
     layui.use('layer', function () {
         const layer = layui.layer;
@@ -863,7 +865,7 @@ async function performFunctionCallingVerification(model, a, b) {
             layui.use('layer', function () {
                 const layer = layui.layer;
                 layer.closeAll('loading');
-                layer.alert(`请求失败: ${result.error}`, { title: '错误' });
+                layer.alert(`请求失败: ${result.error}`, {title: '错误'});
             });
             return;
         }
@@ -871,14 +873,13 @@ async function performFunctionCallingVerification(model, a, b) {
         layui.use('layer', function () {
             const layer = layui.layer;
             layer.closeAll('loading');
-            const title = '<b><span style="color: black;">模型函数调用响应对比（非openai模型的函数调用响应可能有差异，但肉眼可辨）</span></b>';
+            const title = '<b><span css="color: black;">模型函数调用响应对比（非openai模型的函数调用响应可能有差异，但肉眼可辨）</span></b>';
             let text;
             // 第一种是 openai 的函数调用响应，第二种是经 oneapi 中转后 gemini 的函数调用响应，目前手里只有这两种支持 FC
             if (result.choices?.[0]?.finish_reason === 'function_call' || result.choices?.[0]?.message?.tool_calls?.[0]?.type === "function") {
-                text = '<b><span style="color: green;">模型返回了函数调用响应，测试模型为：' + model + '</span></b>';
-            }
-            else {
-                text = '<b><span style="color: red;">模型无函数调用响应返回，测试模型为：' + model + '</span></b>';
+                text = '<b><span css="color: green;">模型返回了函数调用响应，测试模型为：' + model + '</span></b>';
+            } else {
+                text = '<b><span css="color: red;">模型无函数调用响应返回，测试模型为：' + model + '</span></b>';
             }
             const referenceFunctionCall = JSON.stringify({
                 "index": 0,
@@ -914,14 +915,14 @@ async function performFunctionCallingVerification(model, a, b) {
                         </tbody>
                     </table>
                 `;
-            layer.alert(message, { title: title, area: ['800px', '600px'] });
+            layer.alert(message, {title: title, area: ['800px', '600px']});
         });
     } catch (error) {
         console.error('Error in performOfficialVerification:', error);
         layui.use('layer', function () {
             const layer = layui.layer;
             layer.closeAll('loading');
-            layer.alert('验证过程中发生错误: ' + error.message, { title: '错误' });
+            layer.alert('验证过程中发生错误: ' + error.message, {title: '错误'});
         });
     }
 }
@@ -986,7 +987,7 @@ function checkQuota() {
 
         // 获取总额度
         fetch(`${apiUrl}/dashboard/billing/subscription`, {
-            headers: { 'Authorization': `Bearer ${apiKey}` }
+            headers: {'Authorization': `Bearer ${apiKey}`}
         })
             .then(response => response.json())
             .then(quotaData => {
@@ -1001,7 +1002,7 @@ function checkQuota() {
                 const endDate = `${year}-${month}-${day}`;
 
                 return fetch(`${apiUrl}/dashboard/billing/usage?start_date=${startDate}&end_date=${endDate}`, {
-                    headers: { 'Authorization': `Bearer ${apiKey}` }
+                    headers: {'Authorization': `Bearer ${apiKey}`}
                 });
             })
             .then(response => response.json())

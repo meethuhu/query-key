@@ -1,0 +1,182 @@
+@import 'base';
+
+.title-hub {
+  margin: 15px auto 10px auto;
+  text-align: center;
+
+  h1 {
+    font-size: 45px;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  > h3 {
+    font-weight: bold;
+    font-size: 18px;
+    color: $text-color;
+  }
+}
+
+form {
+  width: min(100%, 800px);
+
+  textarea,
+  input[type="text"] {
+    margin-top: $spacing;
+    padding: 10px;
+    width: 100%;
+  }
+
+  > textarea {
+    height: 100px;
+  }
+
+  input,
+  textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    // font-size: 16px;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+.model-input-container {
+  display: flex;
+  margin-top: $spacing;
+
+  .model_left {
+    margin-top: 0;
+    padding: 10px;
+    width: 66%;
+  }
+
+  .model_right {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: $spacing;
+    color: $text-color;
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: $spacing;
+    }
+
+    input[type="button"] {
+      width: 100%;
+      padding: 10px;
+      background-color: $warning-color;
+      border: none;
+      color: #fff;
+    }
+  }
+}
+
+.submit-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $spacing;
+  width: 100%;
+
+  > input[type="button"] {
+    flex: 1;
+    padding: 10px;
+
+    &:nth-child(1) {
+      background-color: $primary-color;
+      margin-right: $spacing;
+    }
+
+    &:nth-child(2) {
+      background-color: $success-color;
+      margin-right: $spacing;
+    }
+
+    &:nth-child(3) {
+      background-color: $danger-color;
+    }
+  }
+}
+
+/* 响应容器样式 */
+.response-container {
+  text-align: center;
+  width: min(100%, 800px);
+  margin: 40px auto 0;
+  // padding: 20px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  // font-size: 16px;
+
+  pre {
+    white-space: pre-wrap;
+    // border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+}
+
+/* 复制按钮样式 */
+.copy-buttons {
+  margin-bottom: 10px;
+
+  .submit-container {
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: $success-color;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  }
+}
+
+/* 页脚样式 */
+footer.copyright {
+  text-align: center;
+
+  color: #333;
+  line-height: 1.6;
+
+  a {
+    color: #1e88e5;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .contributors-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+
+    span {
+      display: flex;
+      align-items: center;
+      margin: 5px;
+    }
+  }
+}

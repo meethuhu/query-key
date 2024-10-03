@@ -1,0 +1,140 @@
+@import 'base';
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em; // Add some spacing below the table
+
+  th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    text-align: center;
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .td1 {
+    width: 15%; // Adjust width as needed
+
+    &-ok {
+      color: green; // Style for "模型一致可用"
+    }
+
+    &-no {
+      color: rgb(211, 144, 19);
+    }
+
+    &-error {
+      color: $danger-color;
+    }
+  }
+
+  .td2 {
+    width: 35%; // Adjust width as needed
+  }
+
+  .td3 {
+    width: 15%; // Adjust width as needed
+    text-align: center; // Center the response time
+  }
+
+  .td4 {
+    width: 40%;
+    max-width: 40px;
+    overflow: inherit;
+    overflow-wrap: break-word; // Adjust width as needed
+  }
+}
+
+/* 复制按钮样式 */
+.copy-btn2 {
+  cursor: pointer;
+}
+
+/* 验证按钮组样式 */
+.verify-btn-group {
+  display: flex;
+  gap: 5px; // Adjust spacing between buttons as needed
+
+  .verify-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 5px 0; // Adjust font size as needed
+
+    &.cyan {
+      color: #fff;
+      background-color: #f7ab48;
+    }
+
+    &.blue {
+      color: #fff;
+      background-color: #3498DB;
+    }
+
+    &.yellow {
+      color: #fff;
+      background-color: #f8606f;
+    }
+
+    &.green {
+      color: #fff;
+      background-color: #f8606f;
+    }
+  }
+}
+
+/* Tooltip Styles (if needed) */
+[data-tooltip] {
+  position: relative;
+
+  &:before {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+    // white-space: nowrap;
+    overflow-wrap: break-word;
+    // Prevent tooltip text from wrapping
+  }
+
+  &:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* 模型过滤器容器样式 */
+.model-filter-container {
+  display: flex;
+
+  > input[type="text"] {
+    flex: 4;
+  }
+
+  > button:nth-child(2) {
+    flex: 1;
+    margin: 13px 10px 0 10px;
+  }
+
+  > button:nth-child(3) {
+    flex: 1;
+    margin: 13px 0 0 0;
+  }
+}

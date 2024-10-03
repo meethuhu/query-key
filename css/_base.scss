@@ -1,0 +1,38 @@
+/* 变量定义 */
+$spacing: 13px;
+$text-color: #333;
+$primary-color: #3e95f1;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #fe9307;
+
+/* 通用样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  padding: 14px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+input[type="button"] {
+  color: #fff;
+  border: none;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: bold;
+  color: $primary-color;
+}

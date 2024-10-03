@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* 变量定义 */
+/* 通用样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  padding: 14px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+input[type=button] {
+  color: #fff;
+  border: none;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #3e95f1;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+table th, table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+table th {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+table .td1 {
+  width: 15%;
+}
+table .td1-ok {
+  color: green;
+}
+table .td1-no {
+  color: rgb(211, 144, 19);
+}
+table .td1-error {
+  color: #dc3545;
+}
+table .td2 {
+  width: 35%;
+}
+table .td3 {
+  width: 15%;
+  text-align: center;
+}
+table .td4 {
+  width: 40%;
+  max-width: 40px;
+  overflow: inherit;
+  overflow-wrap: break-word;
+}
+
+/* 复制按钮样式 */
+.copy-btn2 {
+  cursor: pointer;
+}
+
+/* 验证按钮组样式 */
+.verify-btn-group {
+  display: flex;
+  gap: 5px;
+}
+.verify-btn-group .verify-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+.verify-btn-group .verify-btn.cyan {
+  color: #fff;
+  background-color: #f7ab48;
+}
+.verify-btn-group .verify-btn.blue {
+  color: #fff;
+  background-color: #3498DB;
+}
+.verify-btn-group .verify-btn.yellow {
+  color: #fff;
+  background-color: #f8606f;
+}
+.verify-btn-group .verify-btn.green {
+  color: #fff;
+  background-color: #f8606f;
+}
+
+/* Tooltip Styles (if needed) */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  opacity: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+  overflow-wrap: break-word;
+}
+[data-tooltip]:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 模型过滤器容器样式 */
+.model-filter-container {
+  display: flex;
+}
+.model-filter-container > input[type=text] {
+  flex: 4;
+}
+.model-filter-container > button:nth-child(2) {
+  flex: 1;
+  margin: 13px 10px 0 10px;
+}
+.model-filter-container > button:nth-child(3) {
+  flex: 1;
+  margin: 13px 0 0 0;
+}
+
+/*# sourceMappingURL=response.css.map */

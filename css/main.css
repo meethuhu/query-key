@@ -1,0 +1,187 @@
+@charset "UTF-8";
+/* 变量定义 */
+/* 通用样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  padding: 14px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+input[type=button] {
+  color: #fff;
+  border: none;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #3e95f1;
+}
+
+.title-hub {
+  margin: 15px auto 10px auto;
+  text-align: center;
+}
+.title-hub h1 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #3e95f1;
+}
+.title-hub > h3 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+form {
+  width: min(100%, 800px);
+}
+form textarea,
+form input[type=text] {
+  margin-top: 13px;
+  padding: 10px;
+  width: 100%;
+}
+form > textarea {
+  height: 100px;
+}
+form input,
+form textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form textarea {
+  resize: none;
+}
+
+.model-input-container {
+  display: flex;
+  margin-top: 13px;
+}
+.model-input-container .model_left {
+  margin-top: 0;
+  padding: 10px;
+  width: 66%;
+}
+.model-input-container .model_right {
+  width: 34%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 13px;
+  color: #333;
+}
+.model-input-container .model_right input[type=number] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 13px;
+}
+.model-input-container .model_right input[type=button] {
+  width: 100%;
+  padding: 10px;
+  background-color: #fe9307;
+  border: none;
+  color: #fff;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+  width: 100%;
+}
+.submit-container > input[type=button] {
+  flex: 1;
+  padding: 10px;
+}
+.submit-container > input[type=button]:nth-child(1) {
+  background-color: #3e95f1;
+  margin-right: 13px;
+}
+.submit-container > input[type=button]:nth-child(2) {
+  background-color: #28a745;
+  margin-right: 13px;
+}
+.submit-container > input[type=button]:nth-child(3) {
+  background-color: #dc3545;
+}
+
+/* 响应容器样式 */
+.response-container {
+  text-align: center;
+  width: min(100%, 800px);
+  margin: 40px auto 0;
+}
+.response-container pre {
+  white-space: pre-wrap;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+/* 复制按钮样式 */
+.copy-buttons {
+  margin-bottom: 10px;
+}
+.copy-buttons .submit-container {
+  display: flex;
+  justify-content: space-around;
+}
+.copy-buttons .submit-container button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 页脚样式 */
+footer.copyright {
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
+}
+footer.copyright a {
+  color: #1e88e5;
+  text-decoration: none;
+}
+footer.copyright a:hover {
+  text-decoration: underline;
+}
+footer.copyright img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+footer.copyright .contributors-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+footer.copyright .contributors-list span {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+/*# sourceMappingURL=main.css.map */
